@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dog Facts</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+      h1 {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+      img {
+        position: relative;
+        left: 39%;
+    
+    }
+        button {
+            position: relative;
+            top: 50px;
+            left: 300px;
+            padding: 10px;
+            background-color: blue;
+            border: none;
+            color: white;
+        }
+       </style>
+</head>
+<body>
+       
+        <h1>Image Generating</h1> 
+    <img id="dog-image" src="" width="300px" height="300px">
+    
+    <button onclick="generate()">Generate</button>
+    
+        <script>
+            function generate() {
+                document.getElementById("dog-image").value;
+          
+    
+        
+        
+            fetch("https://dog.ceo/api/breeds/image/random", {method: "GET"})
+                .then((response) => response.json())
+                .then((data) => {
+                  
+    
+                    const image = data.message;
+                    document.getElementById("dog-image").src = image;
+                 
+                })
+                .catch((error) => {
+                    console.error('Error fetching the image:', error);
+                });
+            }
+        </script>
+    
+    
+    <script src="sw.js"></script>
+</body>
+</html>
